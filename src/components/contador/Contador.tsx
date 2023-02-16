@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import BotonesContador from "./BotonesContador";
+import DisplayContador from "./DisplayConador";
 type TContadorProps = {
   initialValue?: number;
 };
@@ -25,13 +26,8 @@ const Contador = ({ initialValue }: TContadorProps) => {
 
   return (
     <>
-      <h3>{value}</h3>
-      <div>
-        <button onClick={() => resta(5)}>Menos 5 </button>
-        <button onClick={() => resta(1)}>Menos</button>
-        <button onClick={() => suma()}>Mas</button>
-        <button onClick={() => suma(5)}>Mas 5 </button>
-      </div>
+      <DisplayContador valor={value} />
+      <BotonesContador resta={resta} suma={suma} />
     </>
   );
 };
