@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 
-export default class ComponenteCicloVida extends Component {
+export default class ComponenteCicloVida extends Component<
+  {},
+  { toggle: boolean }
+> {
   state = {
     toggle: false,
   };
@@ -12,7 +15,9 @@ export default class ComponenteCicloVida extends Component {
     return (
       <div>
         <h1>ComponenteCicloVida</h1>
-        <button onClick={() => this.setState({ toggle: !this.state.toggle })}>
+        <button
+          onClick={() => this.setState((state) => ({ toggle: !state.toggle }))}
+        >
           togle
         </button>
       </div>
