@@ -1,7 +1,8 @@
 import React from "react";
+import "./Admin.scss";
 
 const Admin = () => {
-  return <div>Admin</div>;
+  return <div className="saludo">Admin</div>;
 };
 
 export default Admin;
