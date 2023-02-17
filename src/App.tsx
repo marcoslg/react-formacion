@@ -1,18 +1,36 @@
-import React, { useState } from "react";
-import ComponenteClase from "./components/ComponenteClase";
-
+import React from "react";
 import "./App.css";
-// import EventosTeclado from "./components/eventos/EventosTeclado";
-import EventosRaton from "./components/eventos/EventosRaton";
-// import IntroEventos from "./components/eventos/IntroEventos";
+// import Admin from "./views/Admin";
+// import Contact from "./views/Contact";
+// import Home from "./views/Home";
+// import Login from "./views/Login";
+import { Admin, Contact, Home, Login } from "views";
 
 function App() {
-  return (
+  const routes = {
+    home: <Home />,
+    contact: <Contact />,
+    admin: <Admin />,
+    login: <Login />,
+  };
+  // let currtenRoute: "home" | "contact" | "admin" | "login" = "contact";
+  let currtenRoute: string = "home";
+  // return routes[currtenRoute];
+  // if (currtenRoute === "home") return <Home />;
+  // if (currtenRoute === "contact") return <Contact />;
+  // if (currtenRoute === "admin") return <Admin />;
+  // if (currtenRoute === "login") return <Login />;
+  const mostrar = false;
+  return mostrar ? (
     <div>
-      {/* <IntroEventos /> */}
-      {/* <EventosTeclado /> */}
-      <EventosRaton />
+      {currtenRoute === "home" && <Home />}
+      {currtenRoute === "contact" && <Contact />}
+      {currtenRoute === "admin" && <Admin />}
+      {currtenRoute === "login" && <Login />}
+      {currtenRoute === "home" ? "hola estoy en home" : "no estoy en home"}
     </div>
+  ) : (
+    <>no hay naaaa</>
   );
 }
 
