@@ -4,7 +4,7 @@ import "./App.css";
 // import Contact from "./views/Contact";
 // import Home from "./views/Home";
 // import Login from "./views/Login";
-import { Admin, Contact, Home, Login } from "views";
+import { Admin, Contact, Home, Login, Tareas } from "views";
 
 function App() {
   const routes = {
@@ -14,7 +14,7 @@ function App() {
     login: <Login />,
   };
   // let currtenRoute: "home" | "contact" | "admin" | "login" = "contact";
-  let currtenRoute: string = "login";
+  let currtenRoute: string = "tareas";
   // return routes[currtenRoute];
   // if (currtenRoute === "home") return <Home />;
   // if (currtenRoute === "contact") return <Contact />;
@@ -27,6 +27,7 @@ function App() {
       {currtenRoute === "contact" && <Contact />}
       {currtenRoute === "admin" && <Admin />}
       {currtenRoute === "login" && <Login />}
+      {currtenRoute === "tareas" && <Tareas />}
       {/* {currtenRoute === "home" ? "hola estoy en home" : "no estoy en home"} */}
     </div>
   ) : (
