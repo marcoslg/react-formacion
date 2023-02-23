@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const Users = () => {
   const users = [
@@ -12,9 +13,18 @@ const Users = () => {
   return (
     <div>
       <h1>users</h1>
-      {users.map((user) => (
-        <p key={user.id}>{user.name}</p>
-      ))}
+      <div style={{ padding: "1rem" }}>
+        {users.map((user) => (
+          <Link
+            to={`/users/${user.name}`}
+            key={user.id}
+            style={{ padding: "1rem" }}
+          >
+            {user.name}
+          </Link>
+        ))}
+      </div>
+      <Outlet />
     </div>
   );
 };
