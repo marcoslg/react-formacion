@@ -10,4 +10,5 @@ export interface Tarea {
     apellido: string
     edad: number
     isDeveloper: boolean
+    ciudad: string
   }
