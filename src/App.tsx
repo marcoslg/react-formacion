@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Contact from "views/Contact";
+import Home from "views/Home";
+import Users from "views/Users";
 import "./App.css";
-// import Admin from "./views/Admin";
-// import Contact from "./views/Contact";
-// import Home from "./views/Home";
-// import Login from "./views/Login";
-import { FormulariosFormik, FormulariosYup } from "views";
 
 function App() {
+  const [route, setRoute] = useState("contact");
   return (
     <>
-      {/* <FormulariosFormik /> */}
-      <FormulariosYup />
+      {route === "home" && <Home />}
+      {route === "users" && <Users />}
+      {route === "contact" && <Contact />}
+      <span onClick={() => setRoute("home")}>Home</span>
+      <span onClick={() => setRoute("users")}>users</span>
+      <span onClick={() => setRoute("contact")}>contact</span>
     </>
   );
 }
