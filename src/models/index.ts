@@ -12,3 +12,7 @@ export interface Tarea {
     isDeveloper: boolean
     ciudad: string
   }
+  export type FormDataValidation<T> = {
+    [Property in keyof T]?: string;
+  };
+  

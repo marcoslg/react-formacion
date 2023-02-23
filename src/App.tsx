@@ -4,12 +4,13 @@ import "./App.css";
 // import Contact from "./views/Contact";
 // import Home from "./views/Home";
 // import Login from "./views/Login";
-import { FormulariosClasicos } from "views";
+import { FormulariosFormik, FormulariosYup } from "views";
 
 function App() {
   return (
     <>
-      <FormulariosClasicos />
+      {/* <FormulariosFormik /> */}
+      <FormulariosYup />
     </>
   );
 }
