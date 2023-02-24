@@ -1,4 +1,5 @@
 import axios from "axios";
+import AstronautaLoader from "components/loaders/AstronautaLoader";
 import { RMCharacter } from "models";
 import React, { useState } from "react";
 import { rmService } from "services/http";
@@ -8,7 +9,7 @@ const RMApi = () => {
 
   const [charNumber, setCharNumber] = useState<number>(1);
   const [loading, setLoading] = useState(false);
-
+  const [char, setChar] = useState<RMCharacter>();
   const fetchCharacter = () => {
     console.log(`fetchCharacter ${charNumber}`);
     const url = `${apiURL}/${charNumber}`;
@@ -23,29 +24,7 @@ const RMApi = () => {
     console.log(`fetchCharacter ${charNumber}`);
     const url = `${apiURL}/${charNumber}`;
     console.log(url);
-    // axios
-    //   .get(url)
-    //   .then((r) => console.log(r))
-    //   .catch((err) => console.log(err));
     setLoading(true);
-
-    // rmService
-    //   .get(charNumber.toString())
-    //   .then(console.log)
-    //   .catch(console.log)
-    //   .finally(() => setLoading(false));
-    // try {
-    //   const res = await rmService.get(charNumber.toString());
-    //   console.log(res);
-    // } catch {
-    //   console.log("error");
-    // }
-
-    // const res = await rmService
-    //   .get(charNumber.toString() + "asd")
-    //   .catch(console.error);
-    // setLoading(false);
-    // console.log(res);
 
     const res = await rmService
       .get<RMCharacter>(charNumber.toString())
@@ -53,11 +32,13 @@ const RMApi = () => {
     setLoading(false);
     if (!res) return;
     console.log(res.data);
+    setChar(res.data);
   };
 
   return (
     <div>
       <h2>Choose your character</h2>
+
       <input
         type="number"
         value={charNumber}
@@ -69,7 +50,19 @@ const RMApi = () => {
       <button onClick={axiosCharacter} disabled={loading}>
         axios fetch
       </button>
-      <div className="card">titulo</div>
+      {loading && <AstronautaLoader />}
+      {char && !loading && (
+        <div className="card">
+          <div className="img">
+            <img src={char.image} alt={char.name} />
+          </div>
+          <div className="details">
+            <ul>
+              <li>Name: {char.name}</li>
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
