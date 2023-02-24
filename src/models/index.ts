@@ -16,3 +16,15 @@ export interface Tarea {
     [Property in keyof T]?: string;
   };
   
+
+  export interface RMCharacter {
+      id:number
+      name:string
+      status:string
+      species:string
+      type:string
+      gender:string
+      image:string
+      created:string
+      url:string
+  }

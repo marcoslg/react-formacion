@@ -24,6 +24,9 @@ function App() {
           <NavLink to="/contacto">contact</NavLink>
         </li>
         <li>
+          <NavLink to="/rmapi">Rick&morty api</NavLink>
+        </li>
+        <li>
           <a href="#" onClick={goToUsers}>
             click users
           </a>

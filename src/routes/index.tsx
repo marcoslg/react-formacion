@@ -4,6 +4,7 @@ import Contact from "views/Contact";
 import Users from "views/Users";
 import App from "App";
 import UserDetails from "views/UserDetails";
+import RMApi from "views/RMApi";
 
 const isLogged = () => Math.random() > 0.5;
 
@@ -35,6 +36,10 @@ const routes: RouteObject[] = [
             element: <UserDetails />,
           },
         ],
+      },
+      {
+        path: "rmapi",
+        element: <RMApi />,
       },
       {
         path: "manual",
