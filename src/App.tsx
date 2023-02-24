@@ -1,43 +1,13 @@
 /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
-import { Outlet, Link, NavLink, useNavigate } from "react-router-dom";
+import Contador from "views/Contador";
 import "./App.scss";
 
 function App() {
-  const [logged, setlogged] = useState(false);
-  const navigate = useNavigate();
-  const goToUsers = () => {
-    navigate("users");
-  };
+  const [miEstado, setMiEstado] = useState("hola mundo");
   return (
     <>
-      <nav className="navbar">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        {logged && (
-          <li>
-            <NavLink to="Users">Users</NavLink>
-          </li>
-        )}
-        <li>
-          <NavLink to="/contacto">contact</NavLink>
-        </li>
-        <li>
-          <NavLink to="/rmapi">Rick&morty api</NavLink>
-        </li>
-        <li>
-          <a href="#" onClick={goToUsers}>
-            click users
-          </a>
-        </li>
-      </nav>
-      <Outlet />
-      <div className="footer">
-        <button onClick={() => setlogged((prev) => !prev)}>
-          {logged ? "log out" : "Log in"}
-        </button>
-      </div>
+      <Contador />
     </>
   );
 }
