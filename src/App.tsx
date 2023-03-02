@@ -2,13 +2,12 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Bootstrap from "views/Bootstrap";
+import Materal from "views/Materal";
 
 function App() {
   return (
     <div>
-      <h1>hola</h1>
-      <Bootstrap />
+      <Materal />
     </div>
   );
 }
