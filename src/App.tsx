@@ -1,30 +1,16 @@
 /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
-import React, { useState, createContext } from "react";
-import { NullableContext, Settings, User } from "models";
-import "./App.scss";
-import Home from "views/Home";
-import SettingsView from "views/SettingsView";
-import AppContextProvider from "contexts/AppContextProvider";
-import { ContadorContext } from "contexts/ContadorContextProvider";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Bootstrap from "views/Bootstrap";
 
 function App() {
   return (
-    <AppContextProvider>
-      <Home />
-      <SettingsView />
-      {/* <ContadorContextProvider></ContadorContextProvider> */}
-    </AppContextProvider>
+    <div>
+      <h1>hola</h1>
+      <Bootstrap />
+    </div>
   );
-
-  //   return (
-  //     <>
-  //       <AppContext.Provider value={{ settings, setSettings }}>
-  //         <Home />
-  //         <SettingsView />
-  //       </AppContext.Provider>
-  //     </>
-  //   );
-  // }
 }
 
 export default App;
