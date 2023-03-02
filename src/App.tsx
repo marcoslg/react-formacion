@@ -2,12 +2,12 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Materal from "views/Materal";
+import Contador from "views/Contador";
 
 function App() {
   return (
     <div>
-      <Materal />
+      <Contador />
     </div>
   );
 }
