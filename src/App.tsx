@@ -1,15 +1,30 @@
 /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
-import Contador from "views/Contador";
+import React, { useState, createContext } from "react";
+import { NullableContext, Settings, User } from "models";
 import "./App.scss";
+import Home from "views/Home";
+import SettingsView from "views/SettingsView";
+import AppContextProvider from "contexts/AppContextProvider";
+import { ContadorContext } from "contexts/ContadorContextProvider";
 
 function App() {
-  const [miEstado, setMiEstado] = useState("hola mundo");
   return (
-    <>
-      <Contador />
-    </>
+    <AppContextProvider>
+      <Home />
+      <SettingsView />
+      {/* <ContadorContextProvider></ContadorContextProvider> */}
+    </AppContextProvider>
   );
+
+  //   return (
+  //     <>
+  //       <AppContext.Provider value={{ settings, setSettings }}>
+  //         <Home />
+  //         <SettingsView />
+  //       </AppContext.Provider>
+  //     </>
+  //   );
+  // }
 }
 
 export default App;

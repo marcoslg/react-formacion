@@ -1,30 +1,31 @@
-export interface Tarea {
-    id: number,
-    texto: string;
-    completado: boolean;
-    deleted:boolean
-  }
+import { SetStateAction, Dispatch,  } from "react"
 
-  export interface IFormData {
-    nombre : string
-    apellido: string
-    edad: number
-    isDeveloper: boolean
-    ciudad: string
-  }
-  export type FormDataValidation<T> = {
-    [Property in keyof T]?: string;
-  };
+export interface User
+{
+  username:string
+  role:string
+}
+
+export interface Settings
+{
+  darkmode:boolean
+}
+
+
+export interface Context{
+  settings: Settings
+  user: User
+  setSettings: Dispatch<SetStateAction<Settings>>
+  toggleDarkMode: () =>  void
   
+}
 
-  export interface RMCharacter {
-      id:number
-      name:string
-      status:string
-      species:string
-      type:string
-      gender:string
-      image:string
-      created:string
-      url:string
-  }
+export interface IContadorContext{
+  valor:number
+  
+}
+
+
+export type NullableContext<T> = {
+  [Prop in keyof T]?: T[Prop]
+}
