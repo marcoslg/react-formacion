@@ -1,49 +1,52 @@
-/* eslint-disable */
 import Contador from "./Contador";
+import { fireEvent, render, screen } from "@testing-library/react";
 
-const suma = (a: number, b: number) => a + b;
-
-function ejeutaCallback(callbak: any) {}
-
-test("primer test", () => {
-  const valor = suma(2, 3);
-  console.log(valor);
-  expect(valor).toBe(5);
+it("Renders correctly", () => {
+  const view = render(<Contador />);
+  expect(view).toBeDefined();
 });
 
-describe("Testeando sumas", () => {
-  test("suma + 0 + 0", () => {
-    const valor = suma(0, 0);
-    expect(valor).toBe(0);
-  });
-
-  xit("suma num negativos", () => {
-    const valor = suma(0, 0);
-    expect(suma(-10, -50)).toBe(-60);
+describe("Testeando UI", () => {
+  it("existe un elemento con el texto 'valor: 0'", () => {
+    const view = render(<Contador />);
+    const titulo = view.getByText("valor: 0");
+    //console.log(titulo);
   });
 });
 
-describe("Testeando objetos", () => {
-  it("Un objeto es otro objeto", () => {
-    const mi = { coche: "FErrari" };
-    const mi2 = mi;
-    expect(mi).toBe(mi2);
-    expect(mi).toEqual(mi2);
+describe("Testeando UI2", () => {
+  beforeAll(() => {
+    console.log("antes de los test");
+  });
+  const view = render(<Contador />);
+
+  it("existe un elemento con el texto 'valor: 0'", () => {
+    render(<Contador />);
+    // const titulo = screen.getByText("valor: 0");
+    const titulo = view.getByText("valor: 0");
+    //expect(titulo).toBeDefined();
+    //expect(titulo).toHaveStyle("color: red");
+    //console.log(titulo);
   });
 
-  it("Un objeto es otro no objeto", () => {
-    const mi = { coche: "FErrari" };
-    const mi2 = { ...mi };
-    expect(mi).toBe(mi2);
-    expect(mi).toEqual(mi2);
+  it("Testeando title element", () => {
+    render(<Contador />);
+    const titulo = screen.getByLabelText("title"); //aria-label en el html
+    expect(titulo).toBeDefined();
+    //expect(titulo).toHaveStyle("font-weight: regular");
+    //expect(titulo).toHaveStyle("color: red");
+    //console.log(titulo);
   });
 });
 
-describe("Test mocks", () => {
-  it("primer mock", () => {
-    const mimock = jest.fn();
-    ejeutaCallback(mimock);
-    console.log(mimock);
-    expect(mimock).toBeCalledTimes(1);
+describe("testing contador features", () => {
+  it("increments value", () => {
+    render(<Contador />);
+    const boton = screen.getByText("+ valor");
+    const titulo = screen.getByLabelText("title");
+
+    expect(titulo).toHaveTextContent("valor: 0");
+    fireEvent.click(boton);
+    expect(titulo).toHaveTextContent("valor: 1");
   });
 });
