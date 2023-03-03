@@ -18,27 +18,26 @@ describe("test Pokelist", () => {
 describe("mocking axios", () => {
   let myMock: jest.Mock<any, any>;
 
-  let mockedAxios = axios as jest.MockedFunction<typeof axios>;
+  jest.mock("axios");
+  const mockedAxios = axios as jest.Mocked<typeof axios>;
   beforeAll(() => {
     jest.mock("axios");
-    mockedAxios = jest.mocked(axios, true);
-//     mockedAxios.mockImplementation(() => 
-//        {
-//         data: {
-//           results: [
-//             {
-//               name: "bulbasaur",
-//               url: "https://pokeapi.co/api/v2/pokemon/1/",
-//             },
-//             {
-//               name: "ivysaur",
-//               url: "https://pokeapi.co/api/v2/pokemon/2/",
-//             },
-//           ],
-//         },
-//       };
-//     );
-//   });
+    //mockedAxios = jest.mocked(axios, true);
+    mockedAxios.get.mockResolvedValue({
+      data: {
+        results: [
+          {
+            name: "bulbasaur",
+            url: "https://pokeapi.co/api/v2/pokemon/1/",
+          },
+          {
+            name: "ivysaur",
+            url: "https://pokeapi.co/api/v2/pokemon/2/",
+          },
+        ],
+      },
+    });
+  });
 
   it("mock axios throwing controlled data", async () => {
     const res = await mockedAxios.get("hola");
